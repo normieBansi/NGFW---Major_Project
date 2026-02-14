@@ -1,8 +1,7 @@
 # AI-Augmented Firewall — L2/L3/L4 Anomaly Detection Engine
 
 An ML-driven anomaly detection and automated blocking system that augments
-OPNsense with real-time traffic analysis.  Designed as a B.Tech CSE-Cyber
-Security major project.
+OPNsense with real-time traffic analysis. 
 
 ---
 
@@ -10,21 +9,22 @@ Security major project.
 
 ```
 ┌──────────────┐      syslog/UDP       ┌──────────────────────────────────────────────┐
-│ OPNsense FW  │ ────────────────────→  │  Ubuntu ML Engine (192.168.50.10)             │
+│ OPNsense FW  │ --------------------→ │  Ubuntu ML Engine (192.168.50.10)            │
 │ 192.168.50.1 │      filterlog        │                                              │
-└──────┬───────┘                       │  ┌────────────┐   ┌────────────────┐          │
-       │                               │  │ SyslogListener │→│ FeatureEngine  │          │
-       │                               │  └────────────┘   └───────┬────────┘          │
-       │   ┌───────────────┐           │                           │                   │
-       │   │ Kali Attacker │           │                  ┌────────▼─────────┐         │
-       │   │ 192.168.60.10 │           │                  │ AnomalyDetector  │         │
-       │   └───────┬───────┘           │                  │ (Isolation Forest)│         │
-       │           │                   │                  └────────┬─────────┘         │
-       │           │ attack traffic    │                           │ alert             │
-       │           ▼                   │                  ┌────────▼─────────┐         │
-       │     ┌───────────┐            │                  │  DefenseEngine   │         │
-       │     │ OPT1 seg  │            │                  │  (API → block)   │         │
-       │     └───────────┘            │                  └──────────────────┘         │
+└──────┬───────┘                       │                                              │
+       │                               │  ┌──────────────┐   ┌────────────────┐       │
+       │                               │  │SyslogListener│--→│ FeatureEngine  │       │
+       │                               │  └──────────────┘   └─────┬──────────┘       │
+       │   ┌───────────────┐           │                           │                  │
+       │   │ Kali Attacker │           │                  ┌────────▼─────────┐        │
+       │   │ 192.168.60.10 │           │                  │ AnomalyDetector  │        │
+       │   └───────┬───────┘           │                  │(Isolation Forest)│        │
+       │           │                   │                  └────────┬─────────┘        │
+       │           │ attack traffic    │                           │ alert            │
+       │           ▼                   │                  ┌────────▼─────────┐        │
+       │     ┌───────────┐             │                  │  DefenseEngine   │        │
+       │     │ OPT1 seg  │             │                  │  (API → block)   │        │
+       │     └───────────┘             │                  └──────────────────┘        │
        │                               └──────────────────────────────────────────────┘
        │  ◄──── block via REST API ────
 ```
@@ -205,7 +205,7 @@ NGFW---Major_Project/
    - Enable filterlog in the syslog stream.
 
 2. **Firewall Alias:**
-   - Firewall → Aliases → add alias `ml_blocklist` (type: Host(s))
+   - Firewall → Aliases → add alias `ml_blocklist` _[`Blocked_AI` (here)]_ (type: Host(s))
    - Create a block rule referencing this alias on the OPT1 interface.
 
 3. **API Key:**
