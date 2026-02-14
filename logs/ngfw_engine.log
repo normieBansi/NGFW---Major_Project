@@ -1,0 +1,9 @@
+2026-02-13 21:56:36,110 [INFO] model_trainer: No log files found — using synthetic baseline data
+2026-02-13 21:56:36,134 [INFO] model_trainer: Generated 500 synthetic baseline windows
+2026-02-13 21:56:36,152 [INFO] model_trainer: Training features saved → data/training_features.csv
+2026-02-13 21:56:36,153 [INFO] model_trainer: Training Isolation Forest on 500 samples × 15 features
+2026-02-13 21:56:36,502 [INFO] model_trainer: Model training complete
+2026-02-13 21:56:36,582 [INFO] model_trainer: Model saved → models/isolation_forest.pkl
+2026-02-13 21:56:36,582 [INFO] model_trainer: Scaler saved → models/scaler.pkl
+2026-02-13 21:56:36,588 [INFO] model_trainer: Generated 50 synthetic attack windows
+2026-02-13 21:56:36,601 [INFO] model_trainer: Sanity check: 100.0% of synthetic attacks flagged as anomalies
